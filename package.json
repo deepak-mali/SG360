@@ -1,7 +1,7 @@
 {
-  "name": "node-ts-boilerplate",
+  "name": "sg360",
   "version": "1.0.0",
-  "description": "This project is aimed to give a base ground for people to get started with Node project using typescript.",
+  "description": "This project is aimed to solve two problem using node.js and typescript.",
   "main": "dist",
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
@@ -27,7 +27,7 @@
   "keywords": [
     "typescript",
     "node.js",
-    "boilerplate"
+    "Jest"
   ],
   "author": "Deepak Mali",
   "license": "ISC",
