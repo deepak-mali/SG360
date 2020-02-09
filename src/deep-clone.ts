@@ -4,6 +4,11 @@
  * @param { object } object - Input object.
  * @returns { object } - Cloned object of input object.
  */
+
+const isObject = (object) => {
+	return object && typeof object === 'object';
+};
+
 export const deepClone = (object: object): object => {
 	// Check if input is an object.
 	if (!isObject(object)) {
@@ -35,8 +40,4 @@ export const deepClone = (object: object): object => {
 	}
 
 	return cloneObject;
-};
-
-const isObject = (object) => {
-	return object && typeof object === 'object';
 };
