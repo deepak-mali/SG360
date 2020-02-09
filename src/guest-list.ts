@@ -1,20 +1,27 @@
 /**
  * @author Deepak Mali <mail2deepakmali@gmail.com>
- * @description - Function to filter out partners having companies within range of 100kms of central london (51.515419, -0.141099).
- * @param { object } object - Input object.
- * @returns { object } - Cloned object of input object.
+ * @description - Find partners having companies within range of 100kms of central london (51.515419, -0.141099).
+ * Sort the partners by their name(organization name).
  */
 
 import data from '../public/partners.json';
 
 const EARTH_RADIUS = 6371;
 const DISTANCE = 100;
+
+// Co-ordinates of Central London.
 const EPICENTER_LOCATION = {
 	latitude: 51.515419,
 	longitude: -0.141099,
 };
 
-const validateLocation = (location) => {
+/**
+ * @function validateLocation
+ * @description Validate if latitude and lognitude co-ordinates for lcoation are valid co-ordinates.
+ * @param location - object contaning co-ordinates of location.
+ * @returns { boolean }
+ */
+const validateLocation = (location): boolean => {
 	if (typeof location === 'object' && location.latitude && location.longitude) {
 		location.latitude = Number(location.latitude);
 		location.longitude = Number(location.longitude);
@@ -22,6 +29,7 @@ const validateLocation = (location) => {
 	}
 };
 
+// convert degrees to radians.
 const toRadian = (degree) => {
 	degree = Number(degree);
 
@@ -32,6 +40,7 @@ const toRadian = (degree) => {
 	}
 };
 
+// check if input is a non-empty array.
 const validateArray = (arrayObj) => {
 	if(Array.isArray(arrayObj) && arrayObj.length) {
 		return true;
@@ -40,6 +49,12 @@ const validateArray = (arrayObj) => {
 	}
 };
 
+/**
+ * @function denormalize
+ * @description Denormalize the object to desired form. It gives a simple JSON object array.
+ * @param partnerJson - Partners list
+ * @returns { object }
+ */
 const denormalize = (partnersJson) => {
 	const denormalizedData = [];
 
@@ -62,6 +77,12 @@ const denormalize = (partnersJson) => {
 	return denormalizedData;
 };
 
+/**
+ * @function vincentyDistance
+ * @description calculate the Vincity distance between two locations on the earth.
+ * @param location1 - Source location
+ * @param location2 - Destination location
+ */
 const vincentyDistance = (location1, location2) => {
 	if (!validateLocation(location1)) {
 		throw new Error(`co-ordinates ${location1.latitude}, ${location1.longitude} are invalid location`);
@@ -76,9 +97,7 @@ const vincentyDistance = (location1, location2) => {
 	const longitude2 = toRadian(location2.longitude);
 
 	/**
-		* TODO: Calculate Vincenty distance.
 		* Vincenty formula: Refer: https://en.wikipedia.org/wiki/Great-circle_distance#Computational_formulas
-		*
   */
 
 	const deltaLongitude = Math.abs(longitude1 - longitude2);
@@ -100,6 +119,11 @@ const vincentyDistance = (location1, location2) => {
 	return distance;
 };
 
+/**
+ * @function guestList
+ * @description generate the guest list and sort them in ascending order of their name.
+ * @param partners - Partners list
+ */
 const guestList = (partners = data) => {
 	const partnerList = [];
 	if (!validateLocation(EPICENTER_LOCATION)) {

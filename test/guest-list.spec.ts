@@ -1,3 +1,8 @@
+/**
+ * @author Deepak Mali <mail2deepakmali@gmail.com>
+ * @description - Unit test cases for guest list.
+ */
+
 import * as testPartners from '../public/test-partners';
 import { partners } from '../src';
 

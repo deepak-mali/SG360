@@ -1,3 +1,7 @@
+/**
+ * @author Deepak Mali <mail2deepakmali@gmail.com>
+ * @description - Unit test cases for deep clone.
+ */
 
 import { deepClone } from '../src';
 

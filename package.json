@@ -7,8 +7,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "start": "npm run lint && tsc",
     "start:dev": "nodemon -e ts -w ./src -x npm start",
-    "test": "npm start && jest dist --coverage",
-    "test:coverage": ""
+    "test": "npm start && jest dist",
+    "test:coverage": "npm start && jest dist --coverage"
   },
   "repository": {
     "type": "git",
