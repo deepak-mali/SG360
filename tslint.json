@@ -3,20 +3,59 @@
 	"extends": ["tslint:recommended"],
 	"rules": {
 		"max-line-length": {
-			"options": [120]
+			"options": [140]
 		},
 		"no-debugger": true,
 		"quotemark": [true, "single", "avoid-escape"],
 		"indent": [true, "tabs", 2],
-		"semicolon": [true, "always"],
-		"no-console": {
-			"severity": "warning",
-			"options": ["debug", "info", "log", "time", "timeEnd", "trace"]
-		}
+    "semicolon": [true, "always"],
+    "comma-dangle": ["error", "never"],
+		"no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace",
+      "warn",
+      "error"
+		],
+    "no-duplicate-variable": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+		
+		// Maintainability
+    "cyclomatic-complexity": true,
+    "eofline": true,
+    "object-literal-sort-keys": false,
+		
+		// Style
+    "class-name": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else"
+		],
+		"variable-name": false,
+    "whitespace": [
+      true,
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ]
 	},
 	"jsRules": {
 			"max-line-length": {
-				"options": [120]
+				"options": [140]
 			}
 	},
 	"rulesDirectory": []
